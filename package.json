@@ -1,0 +1,36 @@
+{
+  "name": "oneshot-math",
+  "version": "1.0.0",
+  "description": "One-shot RGS math generator: per-mode books, sequential event indexes, lookup tables, RTP, and max-win in a single pass.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.15.0"
+  },
+  "bin": {
+    "oneshot-math": "./dist/cli.js"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "generate": "tsx src/cli.ts generate --game games/demo-lines --out out/demo-lines --mode all",
+    "generate:base": "tsx src/cli.ts generate --game games/demo-lines --out out/demo-lines --mode base",
+    "generate:bonus": "tsx src/cli.ts generate --game games/demo-lines --out out/demo-lines --mode bonus",
+    "verify": "tsx src/cli.ts verify --dir out/demo-lines/publish_files",
+    "test": "tsx --test tests/event-ids.test.ts tests/no-forbidden-terms.test.ts tests/volatility.test.ts",
+    "build": "tsc",
+    "check:cursor": "bash scripts/check-no-cursor-commit.sh HEAD"
+  },
+  "keywords": [
+    "rgs",
+    "math",
+    "books",
+    "rtp"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
